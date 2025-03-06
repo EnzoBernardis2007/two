@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://bm1ecou2y0cul"]
+
+[ext_resource type="Script" uid="uid://ch6r3plfjd32q" path="res://script/Player.cs" id="1_fghjm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bp0px"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_5u11y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fghjm"]
+size = Vector2(517, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bp0px"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(549, 113)
+script = ExtResource("1_fghjm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("RectangleShape2D_bp0px")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CharacterBody2D"]
+scale = Vector2(20, 20)
+mesh = SubResource("BoxMesh_5u11y")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(549, 288)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_fghjm")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D/CollisionShape2D"]
+mesh = SubResource("BoxMesh_bp0px")
