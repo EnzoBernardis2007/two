@@ -5,12 +5,26 @@ public partial class Player : CharacterBody2D
 {
 	[Export] public int speed = 200;
 	[Export] public int jumpForce = 300;
-	[Export] public float gravity = 980; // Padrão do Godot para 2D
+	[Export] public float gravity = 980;
+	[Export] public bool active = false;
 
 	public override void _PhysicsProcess(double delta)
 	{
-		HandleMovement(delta);
+		ApplyGravity(delta);
+		ChangeCharacter();
+		
+		if (active) {
+			HandleMovement(delta);
+		} else if (IsOnFloor()) {
+			Velocity = new Vector2(0, Velocity.Y);
+		}
+		
 		MoveAndSlide();
+	}
+	
+	private void ApplyGravity(double delta) 
+	{
+		if (!IsOnFloor()) Velocity += new Vector2(0, gravity * (float)delta);
 	}
 
 	private void HandleMovement(double delta)
@@ -18,14 +32,15 @@ public partial class Player : CharacterBody2D
 		Vector2 direction = Vector2.Zero;
 
 		if (Input.IsActionPressed("move_right")) direction.X += 1;
-		else if (Input.IsActionPressed("move_left")) direction.X -= 1;
+		if (Input.IsActionPressed("move_left")) direction.X -= 1;
 
 		Velocity = new Vector2(direction.X * speed, Velocity.Y);
 		
-		// gravity
-		if (!IsOnFloor()) Velocity += new Vector2(0, gravity * (float)delta);
-
 		// jump
 		if (Input.IsActionJustPressed("jump") && IsOnFloor()) Velocity = new Vector2(Velocity.X, -jumpForce);
+	}
+	
+	private void ChangeCharacter() {
+		if (Input.IsActionJustPressed("change_character")) active = !active;
 	}
 }
