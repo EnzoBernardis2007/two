@@ -26,15 +26,13 @@ position = Vector2(0, 10)
 scale = Vector2(20, 20)
 mesh = SubResource("BoxMesh_mjppj")
 
-[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("door")]
+[node name="Area2D" type="Area2D" parent="."]
 z_index = 2
 scale = Vector2(3.40611, 3.03799)
 script = ExtResource("1_hbae6")
-door = NodePath("")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-0.146797, -0.164581)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_v0maf")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Area2D"]

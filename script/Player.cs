@@ -3,6 +3,8 @@ using System;
 
 public partial class Player : CharacterBody2D
 {
+	[Export] public Enums.HearthType hearthType;
+	[Export] public bool hasHearth = false;
 	[Export] public int speed = 200;
 	[Export] public int jumpForce = 300;
 	[Export] public float gravity = 980;

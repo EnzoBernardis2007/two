@@ -1,12 +1,20 @@
-[gd_scene load_steps=3 format=4 uid="uid://bm1ecou2y0cul"]
+[gd_scene load_steps=7 format=4 uid="uid://bm1ecou2y0cul"]
 
+[ext_resource type="Script" uid="uid://crdshnbpsyxfk" path="res://script/SceneManager.cs" id="1_5u11y"]
 [ext_resource type="PackedScene" uid="uid://tga42vx07n7y" path="res://prefab/player.tscn" id="1_bp0px"]
 [ext_resource type="TileSet" uid="uid://bwy04qfxd5s6w" path="res://scene/basic.tres" id="1_fghjm"]
+[ext_resource type="Script" uid="uid://c2us60lbtgnle" path="res://script/Hearth.cs" id="4_u3ux8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5u11y"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_u3ux8"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_5u11y")
 
 [node name="player2" parent="." instance=ExtResource("1_bp0px")]
 position = Vector2(384, 158)
+hearthType = 1
 
 [node name="player1" parent="." instance=ExtResource("1_bp0px")]
 position = Vector2(166, 180)
@@ -26,3 +34,17 @@ tile_set = ExtResource("1_fghjm")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(295, 168)
 zoom = Vector2(2, 2)
+
+[node name="Area2D" type="Area2D" parent="."]
+z_index = 2
+position = Vector2(215, 170)
+script = ExtResource("4_u3ux8")
+hearthType = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_5u11y")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Area2D/CollisionShape2D"]
+position = Vector2(-1.49012e-07, 2.80142e-06)
+scale = Vector2(20.0227, 20)
+mesh = SubResource("SphereMesh_u3ux8")
