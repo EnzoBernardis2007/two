@@ -7,6 +7,11 @@ public partial class Player : CharacterBody2D
 	[Export] public int jumpForce = 300;
 	[Export] public float gravity = 980;
 	[Export] public bool active = false;
+	
+	public override void _Ready() 
+	{
+		AddToGroup("player");
+	}
 
 	public override void _PhysicsProcess(double delta)
 	{

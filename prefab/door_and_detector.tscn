@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://0aivhlfsrgco"]
+
+[ext_resource type="Script" uid="uid://dj0rkwdhiko84" path="res://script/PlayerDetector.cs" id="1_hbae6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_20r0h"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_mjppj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v0maf"]
+size = Vector2(12.6244, 8.22915)
+
+[sub_resource type="BoxMesh" id="BoxMesh_v1d1a"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+z_index = 3
+scale = Vector2(1, 4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 10)
+shape = SubResource("RectangleShape2D_20r0h")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D"]
+position = Vector2(0, 10)
+scale = Vector2(20, 20)
+mesh = SubResource("BoxMesh_mjppj")
+
+[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("door")]
+z_index = 2
+scale = Vector2(3.40611, 3.03799)
+script = ExtResource("1_hbae6")
+door = NodePath("")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.146797, -0.164581)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_v0maf")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Area2D"]
+scale = Vector2(-12.7483, -8.31073)
+mesh = SubResource("BoxMesh_v1d1a")
