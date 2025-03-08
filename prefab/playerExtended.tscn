@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://biamit35yhdwq"]
+
+[ext_resource type="Script" uid="uid://chkaj4poxsm7b" path="res://script/PlayerExtend.cs" id="1_xl2yu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oj046"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_a1o1i"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_xl2yu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_oj046")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+z_index = 10
+scale = Vector2(20, 20)
+mesh = SubResource("BoxMesh_a1o1i")

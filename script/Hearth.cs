@@ -17,7 +17,6 @@ public partial class Hearth : Area2D
 		Player player = obj as Player;
 		if (player != null && player.hearthType == hearthType) {
 			player.hasHearth = true;
-			GD.Print(player.hasHearth);
 			QueueFree();
 		}
 	}
