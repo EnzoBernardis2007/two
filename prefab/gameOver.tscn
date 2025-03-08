@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://ck4kvyqcpu72e"]
+
+[ext_resource type="Script" uid="uid://bo3p4t7khaxgv" path="res://script/GameOver.cs" id="1_3toa3"]
+
+[node name="Control" type="Control"]
+visible = false
+z_index = 500
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3toa3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(14.9921, 15.069)
+color = Color(0, 0, 0, 0.752941)
+
+[node name="Button" type="Button" parent="."]
+top_level = true
+layout_mode = 0
+offset_left = 169.0
+offset_top = 436.0
+offset_right = 250.0
+offset_bottom = 467.0
+scale = Vector2(3.24492, 3.24492)
+text = "Try Again"

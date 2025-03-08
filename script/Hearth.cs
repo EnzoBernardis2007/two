@@ -13,11 +13,18 @@ public partial class Hearth : Area2D
 	public void OnBodyEntered(Node2D obj)
 	{
 		if (!obj.IsInGroup("player")) return;
-		
-		Player player = obj as Player;
-		if (player != null && player.hearthType == hearthType) {
+
+		if (obj is Player player && player.hearthType == hearthType)
+		{
 			player.hasHearth = true;
 			QueueFree();
 		}
+		else if (obj is PlayerExtend playerExtend && playerExtend.hearthType == hearthType)
+		{
+			playerExtend.hasHearth = true;
+			QueueFree();
+		}
 	}
+
+
 }

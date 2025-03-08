@@ -9,6 +9,7 @@ public partial class PlayerExtend : Player
 	
 	public override void _Ready() 
 	{
+		base._Ready();
 		otherPlayerScript = otherPlayer as Player;
 	}
 
