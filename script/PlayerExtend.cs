@@ -4,17 +4,22 @@ using System;
 public partial class PlayerExtend : Player
 {
 	[Export] public CharacterBody2D otherPlayer;
+	private Player otherPlayerScript;
 	[Export] public SceneManager sceneManager;
+	
+	public override void _Ready() 
+	{
+		otherPlayerScript = otherPlayer as Player;
+	}
 
 	public override void _PhysicsProcess(double delta)
 	{
-		base._PhysicsProcess(delta); // Chama o método base primeiro
+		base._PhysicsProcess(delta); 
 
-		// Verifica se houve colisão com outro jogador
 		for (int i = 0; i < GetSlideCollisionCount(); i++)
 		{
 			KinematicCollision2D collision = GetSlideCollision(i);
-			if (collision.GetCollider() == otherPlayer)
+			if (collision.GetCollider() == otherPlayer && hasHearth && otherPlayerScript.hasHearth)
 			{
 				sceneManager.ShowEndScene();
 				break;

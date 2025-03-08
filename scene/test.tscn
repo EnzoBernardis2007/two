@@ -9,15 +9,18 @@
 script = ExtResource("1_5u11y")
 player1 = NodePath("player1")
 player2 = NodePath("player2")
+sceneName = "test2"
 
 [node name="player2" parent="." instance=ExtResource("1_bp0px")]
 position = Vector2(384, 158)
 hearthType = 1
+hasHearth = true
 
 [node name="player1" parent="." node_paths=PackedStringArray("otherPlayer", "sceneManager") instance=ExtResource("3_u3ux8")]
 position = Vector2(198, 172)
 otherPlayer = NodePath("../player2")
 sceneManager = NodePath("..")
+hasHearth = true
 active = true
 
 [node name="Node" type="Node" parent="."]
